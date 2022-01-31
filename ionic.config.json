@@ -1,0 +1,8 @@
+{
+  "name": "recipies-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue",
+  "id": "c5d7ca89"
+}
