@@ -2,8 +2,10 @@
   <ion-header :translucent="true" v-if="user">
     <ion-toolbar>
       <ion-buttons slot="start">
-        <ion-back-button v-if="isDetails" default-href="/"></ion-back-button>
-        <ion-button v-if="!isDetails" :routerLink="'/recipe/new'">
+        <ion-button v-if="isDetails" :routerLink="'/'">
+          <ion-icon slot="icon-only" :icon="arrowBackOutline"></ion-icon>
+        </ion-button>
+        <ion-button v-if="!isDetails" @click="goToNew">
           <ion-icon slot="icon-only" :icon="addCircleOutline"></ion-icon>
         </ion-button>
       </ion-buttons>
@@ -22,10 +24,14 @@
 
 <script lang="ts">
 import { getUser } from '@/firebase-services/getUser';
-import { logOut, personCircle, addCircleOutline } from 'ionicons/icons';
+import {
+  logOut,
+  personCircle,
+  addCircleOutline,
+  arrowBackOutline,
+} from 'ionicons/icons';
 
 import {
-  IonBackButton,
   IonButtons,
   IonButton,
   IonHeader,
@@ -40,7 +46,6 @@ import { useRouter } from 'vue-router';
 export default defineComponent({
   name: 'TopNavbar',
   components: {
-    IonBackButton,
     IonButtons,
     IonHeader,
     IonToolbar,
@@ -71,13 +76,19 @@ export default defineComponent({
       }
     });
 
+    const goToNew = () => {
+      router.replace({ name: 'NewRecipe' });
+    };
+
     return {
       logOut,
       personCircle,
       addCircleOutline,
+      arrowBackOutline,
       user,
       displayName,
       handleLogout,
+      goToNew,
     };
   },
 });

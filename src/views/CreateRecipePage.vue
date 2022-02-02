@@ -2,7 +2,7 @@
   <ion-page>
     <TopNavbar :isDetails="true" />
     <ion-content :fullscreen="true">
-      <DetailsForm  @cancelForm="cancelClicked" />
+      <DetailsForm @cancelForm="cancelClicked" />
     </ion-content>
   </ion-page>
 </template>
@@ -19,8 +19,8 @@ export default defineComponent({
     const router = useRouter();
 
     const cancelClicked = () => {
-        router.push({ name: 'Recipies' });
-    }
+      router.push({ name: 'Recipies' });
+    };
 
     return { cancelClicked };
   },

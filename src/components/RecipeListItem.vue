@@ -1,16 +1,11 @@
 <template>
-  <ion-item
-    v-if="recipe"
-    :routerLink="'/recipe/' + recipe.id"
-    :detail="false"
-    class="list-item"
-  >
+  <ion-item v-if="recipe" @click="goToDetails(recipe.id)" class="list-item">
     <ion-thumbnail class="list-item__thumbnail">
       <ion-img v-if="recipe?.imageUrl" :src="recipe.imageUrl"></ion-img>
       <ion-icon v-else :icon="imageOutline"></ion-icon>
     </ion-thumbnail>
     <ion-label>{{ recipe.title }}</ion-label>
-    <ion-button color="danger" @click.prevent="deleteRecipe">
+    <ion-button color="danger" @click.stop.prevent="deleteRecipe">
       <ion-icon slot="icon-only" :icon="trashOutline"></ion-icon>
     </ion-button>
   </ion-item>
@@ -29,6 +24,7 @@ import { defineComponent } from 'vue';
 import { trashOutline, imageOutline } from 'ionicons/icons';
 import { useDocument } from '@/firebase-services/useDocument';
 import { useStorage } from '@/firebase-services/useStorage';
+import { useRouter } from 'vue-router';
 
 export default defineComponent({
   name: 'RecipeListItem',
@@ -46,15 +42,20 @@ export default defineComponent({
   setup(props) {
     const { deleteDocument } = useDocument('recipies', props.recipe.id);
     const { deleteImage } = useStorage();
+    const router = useRouter();
 
     const deleteRecipe = async () => {
       await deleteDocument();
-      if(props.recipe?.filePath) {
+      if (props.recipe?.filePath) {
         await deleteImage(props.recipe.filePath);
       }
     };
 
-    return { trashOutline, imageOutline, deleteRecipe };
+    const goToDetails = (id) => {
+      router.replace({ name: 'RecipeDetails', params: { id } });
+    };
+
+    return { trashOutline, imageOutline, deleteRecipe, goToDetails };
   },
 });
 </script>

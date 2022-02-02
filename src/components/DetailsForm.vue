@@ -27,7 +27,10 @@
           ></ion-input>
         </ion-item>
 
-        <AddIngredient ref="childRef" :ingredients="recipe?.ingredients || []"/>
+        <AddIngredient
+          ref="childRef"
+          :ingredients="recipe?.ingredients || []"
+        />
 
         <ion-item>
           <ion-label position="stacked">Instructions</ion-label>
@@ -145,8 +148,8 @@ export default defineComponent({
         await updateDocument({
           title: title.value,
           instructions: instructions.value,
-          imageUrl: url.value,
-          filePath: filePath.value,
+          imageUrl: file.value ? url.value : props.recipe?.imageUrl,
+          filePath: file.value ? filePath.value : props.recipe?.filePath,
           ingredients,
         }).then((_) => {
           router.replace('/');

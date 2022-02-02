@@ -69,11 +69,9 @@ export default defineComponent({
     const router = useRouter();
 
     const handleLogin = async () => {
-      await login(email.value, password.value);
-
-      if (!error.value) {
+      await login(email.value, password.value).then(()=>{
         router.replace('/');
-      }
+      });      
     };
 
     return { email, password, handleLogin, error };

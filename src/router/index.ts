@@ -25,6 +25,7 @@ const requireAuth = async (to, from, next) => {
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
+    name: 'Main',
     redirect: '/recipies',
     beforeEnter: requireAuth,
   },

@@ -1,4 +1,4 @@
-import { ref, watch } from 'vue';
+import { ref } from 'vue';
 import { auth } from '../firebase/config';
 import { onAuthStateChanged } from 'firebase/auth';
 
