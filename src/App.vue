@@ -12,7 +12,17 @@ export default defineComponent({
   name: 'App',
   components: {
     IonApp,
-    IonRouterOutlet
-  }
+    IonRouterOutlet,
+  },
 });
 </script>
+
+<style>
+.pl-0 {
+  padding-left: 0;
+}
+
+h2 {
+  color: var(--ion-color-dark);
+}
+</style>
