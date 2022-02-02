@@ -1,11 +1,12 @@
 # recipies-app
 
-# Requirements (in order to run the project locally):
+[Test the App online](https://recipies-app-96519.web.app/)
+
+# Run the project locally - Requirements:
 
 - Node needs to be downloaded and installed
 - Typescript needs to be globally installed ('npm i -g typescript')
 - Install globally Ionic-CLI ('npm install -g @ionic/cli')
-- Install globally firebase-tools ('npm install -g firebase-tools')
 - Clone the Git-Repository (how-to: [Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)) or download it as .zip and extract its contents
 - A new .env file has to be created on the project's root folder, with your firebase configs
 - On your terminal, go to the project's root directory and run 'npm i && ionic serve'
